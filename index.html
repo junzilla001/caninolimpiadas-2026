@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caninolimpiadas 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="app.js"></script>
+</head>
+<body>
+
+<div class="container">
+    
+    <header class="hero">
+        <h1>🐾 CANINOLIMPIADAS 🐾</h1>
+        <h2>Edición Verano 2026</h2>
+    </header>
+
+    <div id="screen-inicio" class="screen active fade-in">
+        <h2 class="section-title">Ranking Individual</h2>
+        <p style="text-align:center; color:#94a3b8; margin-bottom:20px;">¿Quién está tirando del carro?</p>
+        
+        <div class="ranking-container">
+            <div class="team-card card-chicos">
+                <h3>👦 Top Chicos</h3>
+                <div id="ranking-chicos-list"></div>
+            </div>
+            
+            <div class="team-card card-chicas">
+                <h3>👧 Top Chicas</h3>
+                <div id="ranking-chicas-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-general" class="screen fade-in">
+        <h2 class="section-title">Marcador Global</h2>
+        
+        <div class="score-board glass">
+            <div class="score-card chico-text">
+                <h3>CHICOS</h3>
+                <div class="points" id="pts-chicos">0</div>
+            </div>
+            <div class="vs-badge">VS</div>
+            <div class="score-card chica-text">
+                <h3>CHICAS</h3>
+                <div class="points" id="pts-chicas">0</div>
+            </div>
+        </div>
+
+        <div class="glass" style="padding: 20px; margin-top: 20px;">
+            <h3 style="color: var(--gold); margin-bottom: 15px; border-bottom: 1px solid #334155; padding-bottom: 10px;">📜 Últimos Movimientos</h3>
+            <div id="historial-publico-list" class="historial-list">
+                </div>
+        </div>
+    </div>
+
+    <div id="screen-reglas" class="screen fade-in">
+        <h2 class="section-title">Reglamento Oficial</h2>
+        
+        <div class="rules-card glass">
+            <h3>🎯 Puntuaciones Básicas</h3>
+            <ul>
+                <li><strong>Conseguir un Instagram/Teléfono:</strong> +5 puntos</li>
+                <li><strong>Liarte (Pico/Morreo):</strong> +15 puntos</li>
+                <li><strong>Llevar a casa / Rematar la faena:</strong> +50 puntos</li>
+            </ul>
+        </div>
+
+        <div class="rules-card glass">
+            <h3>⚠️ Penalizaciones</h3>
+            <ul>
+                <li><strong>Hacer la cobra / Ser rechazado:</strong> -5 puntos</li>
+                <li><strong>Liarte con un ex:</strong> -20 puntos (¡Prohibido reciclar!)</li>
+                <li><strong>Buitrear a un amigo/a:</strong> -30 puntos</li>
+            </ul>
+        </div>
+        
+        <div class="rules-card glass">
+            <h3>⚖️ Funcionamiento</h3>
+            <p>Los puntos se suman tanto al perfil individual de la persona como al marcador global de su equipo (Chicos o Chicas). Solo el Administrador puede validar y subir los puntos al sistema tras escuchar la historia correspondiente.</p>
+        </div>
+    </div>
+
+    <div id="screen-admin" class="screen fade-in">
+        <h2 class="section-title">Panel de Control Supremo</h2>
+        
+        <div class="glass admin-panel" style="margin-bottom: 20px;">
+            <h3 style="color: var(--accent); margin-bottom: 15px;">Añadir Puntos</h3>
+            
+            <label>Jugador/a:</label>
+            <select id="admin-jugador" class="custom-input"></select>
+            
+            <label>Acción / Logro:</label>
+            <input type="text" id="admin-accion" class="custom-input" placeholder="Ej: Instagram de la rubia del bar">
+            
+            <label>Puntos (+ o -):</label>
+            <input type="number" id="admin-puntos" class="custom-input" placeholder="Ej: 15, -5...">
+            
+            <button class="btn-main" style="margin-top: 15px;" onclick="registrarEvento()">Registrar Evento 📝</button>
+        </div>
+
+        <div class="glass admin-panel">
+            <h3 style="color: var(--danger); margin-bottom: 15px;">Gestión de Errores (Borrar)</h3>
+            <p style="font-size: 0.85rem; color:#94a3b8; margin-bottom:10px;">Si te has equivocado, borra el evento aquí y los puntos se restarán automáticamente.</p>
+            <div id="historial-admin-list" class="historial-list"></div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <button onclick="mostrarPantalla('screen-inicio')">🏠<br>Ranking</button>
+        <button onclick="mostrarPantalla('screen-general')">⚔️<br>Global</button>
+        <button onclick="mostrarPantalla('screen-reglas')">📜<br>Reglas</button>
+        <button onclick="intentarEntrarAdmin()">⚙️<br>Admin</button>
+    </nav>
+
+</div>
+
+</body>
+</html>
