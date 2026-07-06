@@ -271,3 +271,5 @@ window.borrarEvento = async function(id) {
     db.historial.splice(index, 1);
     await guardarDB();
 }
+
+//actualizate por favooor
