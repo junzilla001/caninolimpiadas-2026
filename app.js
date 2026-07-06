@@ -4,14 +4,23 @@ import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/f
 // !!! PEGA TU CONFIGURACIÓN DE FIREBASE AQUÍ !!!
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
+
   apiKey: "AIzaSyC0SbLDaFg2f49aGB8wLj5P59xJfjBeiEM",
+
   authDomain: "caninolimiadas2026.firebaseapp.com",
+
   projectId: "caninolimiadas2026",
+
   storageBucket: "caninolimiadas2026.firebasestorage.app",
+
   messagingSenderId: "620200509275",
+
   appId: "1:620200509275:web:ac8539bfbcbdf5851be47e",
+
   measurementId: "G-EK5K8ZWVJC"
+
 };
+
 const app = initializeApp(firebaseConfig);
 const dbFirestore = getFirestore(app);
 
