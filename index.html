@@ -11,11 +11,13 @@
 
 <div class="container">
     
+    <!-- HEADER -->
     <header class="hero">
         <h1>🐾 CANINOLIMPIADAS 🐾</h1>
         <h2>Edición Verano 2026</h2>
     </header>
 
+    <!-- PANTALLA 1: INICIO (Ranking Individual) -->
     <div id="screen-inicio" class="screen active fade-in">
         <h2 class="section-title">Ranking Individual</h2>
         <p style="text-align:center; color:#94a3b8; margin-bottom:20px;">¿Quién está tirando del carro?</p>
@@ -33,6 +35,7 @@
         </div>
     </div>
 
+    <!-- PANTALLA 2: GENERAL Y HISTORIAL -->
     <div id="screen-general" class="screen fade-in">
         <h2 class="section-title">Marcador Global</h2>
         
@@ -49,64 +52,117 @@
         </div>
 
         <div class="glass" style="padding: 20px; margin-top: 20px;">
-            <h3 style="color: var(--gold); margin-bottom: 15px; border-bottom: 1px solid #334155; padding-bottom: 10px;">📜 Últimos Movimientos</h3>
+            <h3 style="color: var(--gold); margin-bottom: 15px; border-bottom: 1px solid #334155; padding-bottom: 10px;">📜 El Salseo (Últimos Movimientos)</h3>
             <div id="historial-publico-list" class="historial-list">
-                </div>
+                <!-- Se llena por JS -->
+            </div>
         </div>
     </div>
 
+    <!-- PANTALLA 3: REGLAS -->
     <div id="screen-reglas" class="screen fade-in">
         <h2 class="section-title">Reglamento Oficial</h2>
         
         <div class="rules-card glass">
-            <h3>🎯 Puntuaciones Básicas</h3>
+            <h3>🎯 Puntuación Base (Máx. 4 pts por persona)</h3>
             <ul>
-                <li><strong>Conseguir un Instagram/Teléfono:</strong> +5 puntos</li>
-                <li><strong>Liarte (Pico/Morreo):</strong> +15 puntos</li>
-                <li><strong>Llevar a casa / Rematar la faena:</strong> +50 puntos</li>
+                <li><strong>Lío:</strong> +1 punto</li>
+                <li><strong>Manualidades / Trabajo Oral:</strong> +2 puntos</li>
+                <li><strong>Follar:</strong> +4 puntos</li>
+            </ul>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px;"><em>* Los puntos son incrementales hasta un máximo de 4 por "víctima". Si un día hay lío (+1) y al siguiente se folla (+3), se suman solo los puntos de diferencia. Si ya había historial previo a las olimpiadas, solo se puntúa la escalada.</em></p>
+        </div>
+
+        <div class="rules-card glass">
+            <h3>📈 Multiplicadores y Bonus</h3>
+            <ul>
+                <li><strong>Trío:</strong> +2 puntos extras (por dificultad).</li>
+                <li><strong>Racha de Noche:</strong> La 2ª persona de la misma noche da +1 pt extra. La 3ª da +2 pts extra, etc.</li>
+                <li><strong>Underdogs (Gurtu y Lucía):</strong> Todo lo que hagan vale x2.</li>
+                <li><strong>Capitán de Noche:</strong> Quien tenga el brazalete esa noche puntúa x2 (Si le toca a un Underdog, ¡es un x4!).</li>
             </ul>
         </div>
 
         <div class="rules-card glass">
-            <h3>⚠️ Penalizaciones</h3>
+            <h3>⚠️ Penalizaciones y Eventos Especiales</h3>
             <ul>
-                <li><strong>Hacer la cobra / Ser rechazado:</strong> -5 puntos</li>
-                <li><strong>Liarte con un ex:</strong> -20 puntos (¡Prohibido reciclar!)</li>
-                <li><strong>Buitrear a un amigo/a:</strong> -30 puntos</li>
+                <li><strong>Hacer algo con tu EX:</strong> Resta exactamente lo que sumaría (Lío -1, Follar -4...).</li>
+                <li><strong>Volver con tu EX:</strong> El jugador pierde todos sus puntos, y el equipo es penalizado con -50 puntos.</li>
+                <li><strong>Empezar algo serio:</strong> El jugador pierde todos sus puntos (game over).</li>
+                <li><strong>La Regla López (Cuernos):</strong> Si alguien pone los cuernos, su equipo suma +100 puntos instantáneos.</li>
             </ul>
-        </div>
-        
-        <div class="rules-card glass">
-            <h3>⚖️ Funcionamiento</h3>
-            <p>Los puntos se suman tanto al perfil individual de la persona como al marcador global de su equipo (Chicos o Chicas). Solo el Administrador puede validar y subir los puntos al sistema tras escuchar la historia correspondiente.</p>
         </div>
     </div>
 
+    <!-- PANTALLA 4: ADMIN -->
     <div id="screen-admin" class="screen fade-in">
         <h2 class="section-title">Panel de Control Supremo</h2>
         
         <div class="glass admin-panel" style="margin-bottom: 20px;">
-            <h3 style="color: var(--accent); margin-bottom: 15px;">Añadir Puntos</h3>
+            <h3 style="color: var(--accent); margin-bottom: 15px;">Añadir Salseo</h3>
             
-            <label>Jugador/a:</label>
-            <select id="admin-jugador" class="custom-input"></select>
+            <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                <label style="font-weight: bold; color: var(--gold);">Jugador/a:</label>
+                <select id="admin-jugador" class="custom-input"></select>
+                
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="checkbox" id="admin-capitan" style="width: 20px; height: 20px;">
+                    <span style="font-weight: bold; color: #38bdf8;">¿Es el Capitán de esta noche? (x2)</span>
+                </label>
+            </div>
+
+            <label style="font-weight: bold;">Acción / Logro:</label>
+            <select id="admin-accion" class="custom-input">
+                <optgroup label="Nuevas Conquistas">
+                    <option value="1" data-tipo="normal">Lío (+1)</option>
+                    <option value="2" data-tipo="normal">Manualidades / Oral (+2)</option>
+                    <option value="4" data-tipo="normal">Follar (+4)</option>
+                </optgroup>
+                <optgroup label="Escalando posiciones (Con la misma persona)">
+                    <option value="1" data-tipo="normal">Lío -> Manualidades (+1)</option>
+                    <option value="3" data-tipo="normal">Lío -> Follar (+3)</option>
+                    <option value="2" data-tipo="normal">Manualidades -> Follar (+2)</option>
+                </optgroup>
+                <optgroup label="Eventos Catastróficos / Legendarios">
+                    <option value="0" data-tipo="lopez">👑 Regla López (Cuernos) [+100 Equipo]</option>
+                    <option value="0" data-tipo="serio">💍 Empieza algo serio [Pierde sus puntos]</option>
+                    <option value="0" data-tipo="vuelve-ex">💔 Vuelve con su EX [Pierde puntos y -50 Equipo]</option>
+                </optgroup>
+            </select>
             
-            <label>Acción / Logro:</label>
-            <input type="text" id="admin-accion" class="custom-input" placeholder="Ej: Instagram de la rubia del bar">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="checkbox" id="admin-es-ex" style="width: 20px; height: 20px;">
+                    <span style="color: var(--danger); font-weight: bold;">¿Es su EX? (Resta)</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="checkbox" id="admin-trio" style="width: 20px; height: 20px;">
+                    <span style="color: #a855f7; font-weight: bold;">¿Ha sido un Trío? (+2)</span>
+                </label>
+            </div>
+
+            <label>Racha en la misma noche (Bonus multi-kill):</label>
+            <select id="admin-racha" class="custom-input">
+                <option value="0">Primera persona (Normal)</option>
+                <option value="1">2ª persona de la noche (+1 pt)</option>
+                <option value="2">3ª persona de la noche (+2 pts)</option>
+                <option value="3">4ª persona de la noche (+3 pts)</option>
+            </select>
+
+            <label style="font-weight: bold; color: var(--gold);">Anécdota / Contexto (OBLIGATORIO):</label>
+            <input type="text" id="admin-desc" class="custom-input" placeholder="Ej: Lío con visita a Bidezabal incluida">
             
-            <label>Puntos (+ o -):</label>
-            <input type="number" id="admin-puntos" class="custom-input" placeholder="Ej: 15, -5...">
-            
-            <button class="btn-main" style="margin-top: 15px;" onclick="registrarEvento()">Registrar Evento 📝</button>
+            <button class="btn-main" style="margin-top: 15px; background: linear-gradient(135deg, #10b981, #059669);" onclick="registrarEvento()">Calcular y Registrar Evento 📝</button>
         </div>
 
         <div class="glass admin-panel">
-            <h3 style="color: var(--danger); margin-bottom: 15px;">Gestión de Errores (Borrar)</h3>
-            <p style="font-size: 0.85rem; color:#94a3b8; margin-bottom:10px;">Si te has equivocado, borra el evento aquí y los puntos se restarán automáticamente.</p>
+            <h3 style="color: var(--danger); margin-bottom: 15px;">Máquina del Tiempo (Borrar)</h3>
+            <p style="font-size: 0.85rem; color:#94a3b8; margin-bottom:10px;">Si la has cagado o te han mentido, borra el evento aquí. El sistema restaurará matemáticamente todo a como estaba antes de esa acción.</p>
             <div id="historial-admin-list" class="historial-list"></div>
         </div>
     </div>
 
+    <!-- NAVEGACIÓN -->
     <nav class="bottom-nav">
         <button onclick="mostrarPantalla('screen-inicio')">🏠<br>Ranking</button>
         <button onclick="mostrarPantalla('screen-general')">⚔️<br>Global</button>
