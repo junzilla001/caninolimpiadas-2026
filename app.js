@@ -39,6 +39,8 @@ const estadoInicial = {
         "Bartu": { equipo: "chicos", puntos: 0, underdog: false },
         "Bosco": { equipo: "chicos", puntos: 0, underdog: false },
         "Mentxi": { equipo: "chicos", puntos: 0, underdog: false },
+        "Peri": { equipo: "chicos", puntos: 0, underdog: false },
+        "Acha": { equipo: "chicos", puntos: 0, underdog: false },
         
         // CHICAS
         "Lucia": { equipo: "chicas", puntos: 0, underdog: true },
