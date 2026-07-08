@@ -55,7 +55,7 @@ const estadoInicial = {
 let db = estadoInicial;
 
 // ESCUCHA FIREBASE (OJO: HEMOS CAMBIADO EL NOMBRE A "caninolimpiadas_oficial" PARA LIMPIAR LOS DATOS VIEJOS)
-onSnapshot(doc(dbFirestore, "juego", "caninolimpiadas_oficial"), (docRef) => {
+onSnapshot(doc(dbFirestore, "juego", "caninolimpiadas_verano"), (docRef) => {
     if (docRef.exists()) {
         db = docRef.data();
     } else {
@@ -65,7 +65,7 @@ onSnapshot(doc(dbFirestore, "juego", "caninolimpiadas_oficial"), (docRef) => {
 });
 
 async function guardarDB() {
-    try { await setDoc(doc(dbFirestore, "juego", "caninolimpiadas_oficial"), db); } 
+    try { await setDoc(doc(dbFirestore, "juego", "caninolimpiadas_verano"), db); } 
     catch (e) { console.error("Error al guardar:", e); }
 }
 
